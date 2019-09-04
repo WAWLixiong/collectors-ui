@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/vue.min.js"></script>
+    <style>
+        [cloak] {
+            dispaly: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 使用v-cloak可以隐藏查询语句未显示时的结果 -->
+        <p v-cloak>++++++{{msg}}------</p>
+        <!-- v-text也类似于查询表达式 -->
+        <h4 v-text="msg">================</h4>
+        <!-- v-text默认没有查询闪烁 -->
+        <!-- v-text会将尖括号中的文本覆盖, 差值表达式，相当于占位符, 都bu会解析html字符串 -->
+        <div>{{msg2}}</div>
+        <div v-text="msg2"></div>
+        <div v-html="msg2"></div>
+        <!-- v-html可以将字符串解析html -->
+        <!-- <input type="button" value="按钮" title="123"> -->
+        <!-- v-bind: 是vue中，提供的用于属性绑定的命令 , 省略下直接写一个：-->
+        <!-- v-bind: 中可以写合法的js表达式 -->
+        <!-- v-on: 绑定时间，缩写未@ -->
+        <input type="button" value="按钮" v-bind:title="mytitle">
+        <input type="button" value="按钮" v-bind:title="mytitle + '123'">
+        <!-- <input type="button" value="按钮" :title="mytitle + '123'" v-on:click="alert ('hello')">  -->
+        <input type="button" value="按钮" :title="mytitle + '123'" v-on:click="show"> 
+        <input type="button" value="按钮" :title="mytitle + '123'" @mouseover="show"> 
+    </div>
+    <script>
+        var vm = new Vue(
+            {
+                el:'#app',
+                data:{
+                    msg:'123',
+                    msg2: '<h1> hh我是一个大大的h1</h1>',
+                    mytitle: '这是我自己定义的一个title',
+                },
+                methods: { // methods属性中定义了当前vue实例所有的可用方法
+                    show: function(){
+                        alert ('hello')
+                    }
+
+                }
+            }
+
+        )
+    </script>
+    
+</body>
+</html>
