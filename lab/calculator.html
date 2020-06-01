@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="lib/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h2>简单计算器</h2>
+    <div>
+      <span>数据A: </span>
+      <span>
+        <input type="text" v-model="p1">
+      </span>
+    </div>
+    <div>
+      <span>数据B: </span>
+      <span>
+        <input type="text" v-model="p2">
+      </span>
+    </div>
+    <div>
+      <button v-on:click="add">计算</button>
+    </div>
+    <div>
+      <span>结果：</span>
+      <span v-text="ret"></span>
+    </div>
+  </div>
+  <script type="text/javascript">
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        p1: '',
+        p2: '',
+        ret: '',
+      },
+      methods: {
+        add: function (p1, p2, event) {
+          this.ret = parseInt(this.p1) + parseInt(this.p2)
+        }
+      }
+    })
+  </script>
+</body>
+</html>

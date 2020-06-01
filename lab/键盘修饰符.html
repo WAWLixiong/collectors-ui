@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="lib/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <form action="">
+      <div>
+        用户名
+        <input type="text" v-on:keyup.delete="clearContent" v-model="uname">
+      </div>
+      <div>
+        密码
+        <input type="text" v-on:keyup.enter="handleSubmit" v-model="passwd">
+      </div>
+      <div>
+        <input type="button" v-on:click="handleSubmit" value="提交">
+      </div>
+    </form>
+  </div>
+  <script type="text/javascript">
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        uname: '',
+        passwd: '',
+      },
+      methods: {
+        handleSubmit: function () {
+          console.log(this.uname + this.passwd)
+        },
+        clearContent: function () {
+          // 按delete键 删除所有内容
+          this.uname = ''
+
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>

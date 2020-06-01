@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript" src="lib/vue.js"></script>
+  <style type="text/css">
+    .active {
+      border: 1px solid red;
+      width: 100px;
+      height: 100px;
+    }
+    .error {
+      background-color: orange;
+    }
+    .test {
+      color: blue;
+    }
+    .base {
+      font-size: 28px;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <div v-bind:class="[activeClass, errorClass, {test: isTest}]">测试样式</div>
+  <button type="button" v-on:click="toggle">切换</button>
+  <div v-bind:class="arrClasses">测试样式2</div>
+  <div v-bind:class="objClasses">测试样式3</div>
+  <button type="button" v-on:click="toggle">切换3</button>
+  <div class="base" v-bind:class="objClasses">测试样式4</div>
+</div>
+<script type="text/javascript">
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      activeClass: 'active',
+      errorClass: 'error',
+      isTest: true,
+      arrClasses: ['active', 'error'],
+      objClasses: {
+        'active': true,
+        'error': true,
+      }
+    },
+    methods: {
+      toggle: function () {
+        // this.activeClass = '';
+        // this.errorClass = '';
+        // this.isTest = !this.isTest;
+        this.objClasses.active = !this.objClasses.active;
+      },
+    }
+  })
+</script>
+</body>
+</html>

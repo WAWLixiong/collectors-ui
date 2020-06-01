@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript" src="lib/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <!--  <input type="text" v-on:keyup="handle" v-model="info">-->
+  <input type="text" v-on:keyup.aaa="handle" v-model="info">
+</div>
+<script type="text/javascript">
+  Vue.config.keyCodes.aaa = 65
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      info: ''
+    },
+    methods: {
+      handle: function (event) {
+        console.log(event.keyCode)
+
+      }
+    }
+  })
+</script>
+</body>
+</html>
